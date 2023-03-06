@@ -1,0 +1,32 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class saw : MonoBehaviour
+{
+    public float speed;
+    public float moveTime;
+
+    private bool dirRight = true; // (true sempre começa pra direita) lado direito ou esquerdo
+    private float timer;
+
+    // Update is called once per frame
+    void Update()
+    {
+        if(dirRight)
+        {   // se verdadeiro vai para direita
+            transform.Translate(Vector2.right * speed * Time.deltaTime);
+        }
+        else
+        {   // se falso vai para esquerda
+            transform.Translate(Vector2.left * speed * Time.deltaTime);
+        }
+
+        timer += Time.deltaTime;
+        if(timer >= moveTime)
+        {
+            dirRight = !dirRight;
+            timer = 0f;
+        }
+    }
+}
